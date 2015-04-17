@@ -1,7 +1,7 @@
 {
   "name": "react-native-motion-manager",
   "version": "0.0.1",
-  "description": "A react-native interface for using the Gyroscope, Accelerometer and Gyroscope",
+  "description": "A react-native interface for using the Gyroscope, Accelerometer and Magnetometer",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "github.com:pwmckenna/react-native-motion-manager.git"
   },
-  "author": "Patrick Williams Vatne <pwmckenna@gmail.com> (http://pwmckenna.com/)",
+  "author": "Patrick Williams <pwmckenna@gmail.com> (http://pwmckenna.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pwmckenna/react-native-motion-manager/issues"
