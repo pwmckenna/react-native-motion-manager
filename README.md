@@ -1,7 +1,5 @@
 # react-native-motion-manager
 
-# MotionManager
-
 CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and Magnetometer.
 
 ### Add it to your project
@@ -9,7 +7,7 @@ CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and
 1. Run `npm install react-native-motion-manager --save`
 2. Open your project in XCode, right click on `Libraries` and click `Add
    Files to "Your Project Name"`.
-3. Add `libRTCVideo.a` to `Build Phases -> Link Binary With Libraries`
+3. Add `libRNMotionManager.a` to `Build Phases -> Link Binary With Libraries`
 4. Click on `RNMotionManager.xcodeproj` in `Libraries` and go the `Build
    Phases` tab. Double click the text to the right of `Header Search
    Paths` and verify that it has `$(SRCROOT)../react-native/React` - if it
@@ -18,6 +16,7 @@ CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and
    header files installed within the `react-native` `node_modules`
    directory.
 
+If you get stuck, take a look at [Brent Vatne's blog](http://brentvatne.ca/packaging-react-native-component/). He was gratious enough to help out on this project, and it is my go to reference for this stuff.
 
 # Api
 
