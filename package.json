@@ -1,25 +1,22 @@
 {
   "name": "react-native-motion-manager",
   "version": "0.0.1",
-  "private": true,
+  "description": "A react-native interface for using the Gyroscope, Accelerometer and Gyroscope",
+  "main": "index.js",
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "react-native": "^0.3.11",
-    "react-native-button": "^1.0.0"
-  },
-  "description": "React Native wrapper for native iOS CMMotionManager",
-  "main": "index.ios.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/pwmckenna/react-native-motion-manager.git"
+    "url": "github.com:pwmckenna/react-native-motion-manager.git"
   },
-  "author": "Patrick Williams <pwmckenna@gmail.com>",
-  "license": "ISC",
+  "author": "Patrick Williams Vatne <pwmckenna@gmail.com> (http://pwmckenna.com/)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/pwmckenna/react-native-motion-manager/issues"
   },
-  "homepage": "https://github.com/pwmckenna/react-native-motion-manager"
+  "homepage": "https://github.com/pwmckenna/react-native-motion-manager",
+  "dependencies": {
+    "react-native": "^0.3.11"
+  }
 }

@@ -1,0 +1,26 @@
+{
+  "name": "react-native-motion-manager",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh"
+  },
+  "dependencies": {
+    "react-native": "^0.3.11",
+    "react-native-button": "^1.0.0",
+    "react-native-motion-manager": "^0.0.1"
+  },
+  "description": "React Native wrapper for native iOS CMMotionManager",
+  "main": "index.ios.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pwmckenna/react-native-motion-manager.git"
+  },
+  "author": "Patrick Williams <pwmckenna@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pwmckenna/react-native-motion-manager/issues"
+  },
+  "homepage": "https://github.com/pwmckenna/react-native-motion-manager"
+}
