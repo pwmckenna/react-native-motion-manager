@@ -18,7 +18,7 @@ CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and
 
 ### Setup trouble?
 
-If you get stuck, take a look at [Brent Vatne's blog](http://brentvatne.ca/packaging-react-native-component/). He was gratious enough to help out on this project, and his blog is my go to reference for this stuff.
+If you get stuck, take a look at [Brent Vatne's blog](http://brentvatne.ca/packaging-react-native-component/). He was gracious enough to help out on this project, and his blog is my go to reference for this stuff.
 
 # Api
 
