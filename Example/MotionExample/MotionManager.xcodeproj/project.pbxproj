@@ -21,10 +21,8 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		7FA2E0D81ADAF3B100BC59C0 /* Accelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2E0D71ADAF3B100BC59C0 /* Accelerometer.m */; };
-		7FA2E0E51ADAFADA00BC59C0 /* Magnetometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2E0E41ADAFADA00BC59C0 /* Magnetometer.m */; };
-		7FBF24711AD98B10006F2112 /* Gyroscope.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF24701AD98B10006F2112 /* Gyroscope.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		BB9CC8371AE0AA7B008A1D08 /* libRNMotionManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9CC8341AE0AA72008A1D08 /* libRNMotionManager.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +96,20 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		BB9CC8331AE0AA72008A1D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB9CC8241AE0AA72008A1D08 /* RNMotionManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BB9CC7ED1AE0A2EB008A1D08;
+			remoteInfo = RNMotionManager;
+		};
+		BB9CC8351AE0AA72008A1D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB9CC8241AE0AA72008A1D08 /* RNMotionManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BB9CC7F81AE0A2EB008A1D08;
+			remoteInfo = RNMotionManagerTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +137,7 @@
 		7FBF246F1AD98B10006F2112 /* Gyroscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gyroscope.h; path = iOS/Gyroscope.h; sourceTree = "<group>"; };
 		7FBF24701AD98B10006F2112 /* Gyroscope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gyroscope.m; path = iOS/Gyroscope.m; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		BB9CC8241AE0AA72008A1D08 /* RNMotionManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMotionManager.xcodeproj; path = "node_modules/react-native-motion-manager/RNMotionManager.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB9CC8371AE0AA7B008A1D08 /* libRNMotionManager.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00481BE81AC0C86700671115 /* libRCTWebSocketDebugger.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -268,6 +282,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				BB9CC8241AE0AA72008A1D08 /* RNMotionManager.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* MotionManager */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -280,6 +295,15 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* MotionManager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BB9CC8251AE0AA72008A1D08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB9CC8341AE0AA72008A1D08 /* libRNMotionManager.a */,
+				BB9CC8361AE0AA72008A1D08 /* RNMotionManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -365,6 +389,10 @@
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
+				{
+					ProductGroup = BB9CC8251AE0AA72008A1D08 /* Products */;
+					ProjectRef = BB9CC8241AE0AA72008A1D08 /* RNMotionManager.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -444,6 +472,20 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BB9CC8341AE0AA72008A1D08 /* libRNMotionManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNMotionManager.a;
+			remoteRef = BB9CC8331AE0AA72008A1D08 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BB9CC8361AE0AA72008A1D08 /* RNMotionManagerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RNMotionManagerTests.xctest;
+			remoteRef = BB9CC8351AE0AA72008A1D08 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -465,10 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				7FA2E0D81ADAF3B100BC59C0 /* Accelerometer.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				7FA2E0E51ADAFADA00BC59C0 /* Magnetometer.m in Sources */,
-				7FBF24711AD98B10006F2112 /* Gyroscope.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
