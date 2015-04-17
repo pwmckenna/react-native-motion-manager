@@ -11,6 +11,10 @@
     "url": "github.com:pwmckenna/react-native-motion-manager.git"
   },
   "author": "Patrick Williams <pwmckenna@gmail.com> (http://pwmckenna.com/)",
+  "contributors": [{
+    "name": "Brent Vatne",
+    "email": "brentvatne@gmail.com"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pwmckenna/react-native-motion-manager/issues"

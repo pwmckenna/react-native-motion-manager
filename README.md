@@ -1,19 +1,23 @@
 # react-native-motion-manager
 
 # MotionManager
-This is a react app that shows how to write obj-c wrappers around the iOS [CMMotionManager](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMMotionManager_Class/)
- library.
-# Usage
 
-If you just want to see this code in action, checkout the code and fire up the xcodeproj and run it.
+CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and Magnetometer.
 
-If you're trying to integrate this into your app, its a little bit tricky. I don't quite know how to package this up so you can just `npm install` it. Coming soon though!
+### Add it to your project
 
-At this point, just copy and paste `iOS/Accelerometer.h` + `iOS/Accelerometer.m` (or Gyroscope or Magnetomer) into your `iOS` folder.  
+1. Run `npm install react-native-motion-manager --save`
+2. Open your project in XCode, right click on `Libraries` and click `Add
+   Files to "Your Project Name"`.
+3. Add `libRTCVideo.a` to `Build Phases -> Link Binary With Libraries`
+4. Click on `RNMotionManager.xcodeproj` in `Libraries` and go the `Build
+   Phases` tab. Double click the text to the right of `Header Search
+   Paths` and verify that it has `$(SRCROOT)../react-native/React` - if it
+   isn't, then add it. This is so XCode is able to find the headers that
+   the `RNMotionManager` source files are referring to by pointing to the
+   header files installed within the `react-native` `node_modules`
+   directory.
 
-
-Does anyone know how to share react-native components that are wrappers around native utilities?  
-There must be a better way to package this stuff...  
 
 # Api
 
