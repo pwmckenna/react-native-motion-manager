@@ -77,7 +77,9 @@ Magnetometer.startMagnetometerUpdates(); // you'll start getting AccelerationDat
 Magnetometer.stopMagnetometerUpdates();
 ```
 
-# Screenshots
+# Example
+
+This repo contains an example react-native app to help get you started. [Source code here.](https://github.com/pwmckenna/react-native-motion-manager/tree/master/Example/MotionExample)
 
 ![](http://pwmckenna.com/react-native-motion-manager/motion.png)
 ![](http://pwmckenna.com/react-native-motion-manager/accelerometer.png)
