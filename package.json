@@ -6,6 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "react-component",
+    "react-native",
+    "ios",
+    "CMMotionManager",
+    "MotionManager",
+    "Gyroscope",
+    "Accelerometer",
+    "Magnetometer"
+  ],
   "repository": {
     "type": "git",
     "url": "github.com:pwmckenna/react-native-motion-manager.git"
