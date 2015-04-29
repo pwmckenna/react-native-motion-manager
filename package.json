@@ -22,10 +22,7 @@
   },
   "author": "Patrick Williams <pwmckenna@gmail.com> (http://pwmckenna.com/)",
   "contributors": [
-    {
-      "name": "Brent Vatne",
-      "email": "brentvatne@gmail.com"
-    }
+    "Brent Vatne <brentvatne@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
