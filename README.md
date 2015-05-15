@@ -4,17 +4,12 @@ CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and
 
 ### Add it to your project
 
-1. Run `npm install react-native-motion-manager --save`
-2. Open your project in XCode, right click on `Libraries` and click `Add
-   Files to "Your Project Name"`.
-3. Add `libRNMotionManager.a` to `Build Phases -> Link Binary With Libraries`
-4. Click on `RNMotionManager.xcodeproj` in `Libraries` and go the `Build
-   Phases` tab. Double click the text to the right of `Header Search
-   Paths` and verify that it has `$(SRCROOT)../react-native/React` - if it
-   isn't, then add it. This is so XCode is able to find the headers that
-   the `RNMotionManager` source files are referring to by pointing to the
-   header files installed within the `react-native` `node_modules`
-   directory.
+1. `npm install react-native-motion-manager@latest --save`
+2. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
+3. Go to `node_modules` ➜ `react-native-camera` and add `RNMotionManager.xcodeproj`
+4. In XCode, in the project navigator, select your project. Add `libRNMotionManager.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+5. Click `RNMotionManager.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Header Search Paths` and make sure it contains both `$(SRCROOT)/../react-native/React` and `$(SRCROOT)/../../React` - mark both as `recursive`.
+5. Run your project (`Cmd+R`)
 
 ### Setup trouble?
 
