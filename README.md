@@ -6,7 +6,7 @@ CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and
 
 1. `npm install react-native-motion-manager@latest --save`
 2. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-3. Go to `node_modules` ➜ `react-native-camera` and add `RNMotionManager.xcodeproj`
+3. Go to `node_modules` ➜ `react-native-motion-manager` and add `RNMotionManager.xcodeproj`
 4. In XCode, in the project navigator, select your project. Add `libRNMotionManager.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 5. Click `RNMotionManager.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). Look for `Header Search Paths` and make sure it contains both `$(SRCROOT)/../react-native/React` and `$(SRCROOT)/../../React` - mark both as `recursive`.
 5. Run your project (`Cmd+R`)
