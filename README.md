@@ -22,7 +22,8 @@ If you get stuck, take a look at [Brent Vatne's blog](http://brentvatne.ca/packa
 var {
     Accelerometer,
     Gyroscope,
-    Magnetometer
+    Magnetometer,
+    Proximity
 } = require('NativeModules');
 var {
   DeviceEventEmitter // will emit events that you can listen to
@@ -70,6 +71,18 @@ DeviceEventEmitter.addListener('MagnetometerData', function (data) {
 });
 Magnetometer.startMagnetometerUpdates(); // you'll start getting AccelerationData events above
 Magnetometer.stopMagnetometerUpdates();
+```
+
+### Proximity
+```js
+// no need to set UpdateInterval, will fire event when detected changes.
+DeviceEventEmitter.addListener('Proximity', function (data) {
+  /**
+  * data.isNear
+  **/
+});
+Proximity.startProximityUpdates(); // you'll start getting Proximity events above
+Proximity.stopProximityUpdates();
 ```
 
 # Example
