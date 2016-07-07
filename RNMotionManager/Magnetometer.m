@@ -17,7 +17,7 @@ RCT_EXPORT_MODULE();
 - (id) init {
   self = [super init];
   NSLog(@"Magnetometer");
-  
+
   if (self) {
     self->_motionManager = [[CMMotionManager alloc] init];
     //Magnetometer
@@ -42,7 +42,7 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(setMagnetometerUpdateInterval:(double) interval) {
   NSLog(@"setMagnetometerUpdateInterval: %f", interval);
-  
+
   [self->_motionManager setMagnetometerUpdateInterval:interval];
 }
 
@@ -56,14 +56,16 @@ RCT_EXPORT_METHOD(getMagnetometerData:(RCTResponseSenderBlock) cb) {
   double x = self->_motionManager.magnetometerData.magneticField.x;
   double y = self->_motionManager.magnetometerData.magneticField.y;
   double z = self->_motionManager.magnetometerData.magneticField.z;
-  
-  NSLog(@"getMagnetometerData: %f, %f, %f", x, y, z);
-  
+  double timestamp = self->_motionManager.magnetometerData.timestamp;
+
+  NSLog(@"getMagnetometerData: %f, %f, %f, %f", x, y, z, timestamp);
+
   cb(@[[NSNull null], @{
          @"magneticField": @{
              @"x" : [NSNumber numberWithDouble:x],
              @"y" : [NSNumber numberWithDouble:y],
-             @"z" : [NSNumber numberWithDouble:z]
+             @"z" : [NSNumber numberWithDouble:z],
+             @"timestamp" : [NSNumber numberWithDouble:timestamp]
              }
          }]
      );
@@ -72,7 +74,7 @@ RCT_EXPORT_METHOD(getMagnetometerData:(RCTResponseSenderBlock) cb) {
 RCT_EXPORT_METHOD(startMagnetometerUpdates) {
   NSLog(@"startMagnetometerUpdates");
   [self->_motionManager startMagnetometerUpdates];
-  
+
   /* Receive the ccelerometer data on this block */
   [self->_motionManager startMagnetometerUpdatesToQueue:[NSOperationQueue mainQueue]
                                              withHandler:^(CMMagnetometerData *magnetometerData, NSError *error)
@@ -80,17 +82,19 @@ RCT_EXPORT_METHOD(startMagnetometerUpdates) {
      double x = magnetometerData.magneticField.x;
      double y = magnetometerData.magneticField.y;
      double z = magnetometerData.magneticField.z;
-     NSLog(@"startMagnetometerUpdates: %f, %f, %f", x, y, z);
-     
+     double timestamp = magnetometerData.timestamp;
+     NSLog(@"startMagnetometerUpdates: %f, %f, %f, %f", x, y, z, timestamp);
+
      [self.bridge.eventDispatcher sendDeviceEventWithName:@"MagnetometerData" body:@{
                                                                                      @"magneticField": @{
                                                                                          @"x" : [NSNumber numberWithDouble:x],
                                                                                          @"y" : [NSNumber numberWithDouble:y],
-                                                                                         @"z" : [NSNumber numberWithDouble:z]
+                                                                                         @"z" : [NSNumber numberWithDouble:z],
+                                                                                         @"timestamp" : [NSNumber numberWithDouble:timestamp]
                                                                                          }
                                                                                      }];
    }];
-  
+
 }
 
 RCT_EXPORT_METHOD(stopMagnetometerUpdates) {
