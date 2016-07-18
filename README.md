@@ -54,11 +54,11 @@ DeviceEventEmitter.addListener('GyroData', function (data) {
   * data.rotationRate.z
   **/
 });
-Gyroscope.startGyroUpdates(); // you'll start getting AccelerationData events above
+Gyroscope.startGyroUpdates(); // you'll start getting GyroscopicData events above
 Gyroscope.stopGyroUpdates();
 ```
 
-### Magnetomer
+### Magnetometer
 ```js
 Magnetometer.setAccelerometerUpdateInterval(0.1); // in seconds
 DeviceEventEmitter.addListener('MagnetometerData', function (data) {
@@ -68,7 +68,7 @@ DeviceEventEmitter.addListener('MagnetometerData', function (data) {
   * data.magneticField.z
   **/
 });
-Magnetometer.startMagnetometerUpdates(); // you'll start getting AccelerationData events above
+Magnetometer.startMagnetometerUpdates(); // you'll start getting MagnetomerData events above
 Magnetometer.stopMagnetometerUpdates();
 ```
 
