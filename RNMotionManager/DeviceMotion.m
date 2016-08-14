@@ -1,5 +1,5 @@
 //
-//  DeviceMontion.m
+//  DeviceMotion.m
 //
 //  Created by Tuan PM.
 //
