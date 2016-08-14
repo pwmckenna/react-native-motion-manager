@@ -72,6 +72,20 @@ Magnetometer.startMagnetometerUpdates(); // you'll start getting AccelerationDat
 Magnetometer.stopMagnetometerUpdates();
 ```
 
+### Filtered DeviceMotion data (only gravity)
+```js
+DeviceMotion.setDeviceMotionUpdateInterval(0.1); // in seconds
+DeviceEventEmitter.addListener('MotionData', function (data) {
+  /**
+  * data.gravity.x
+  * data.gravity.y
+  * data.gravity.z
+  **/
+});
+DeviceMotion.startDeviceMotionUpdates(); // you'll start getting MotionData events above
+DeviceMotion.stopDeviceMotionUpdates();
+```
+
 # Example
 
 This repo contains an example react-native app to help get you started. [Source code here.](https://github.com/pwmckenna/react-native-motion-manager/tree/master/Example/MotionExample)
