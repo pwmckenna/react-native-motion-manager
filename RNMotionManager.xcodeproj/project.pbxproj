@@ -11,6 +11,7 @@
 		BB9CC8081AE0A5FE008A1D08 /* Gyroscope.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9CC8071AE0A5FE008A1D08 /* Gyroscope.m */; };
 		BB9CC80E1AE0A707008A1D08 /* Accelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9CC80B1AE0A707008A1D08 /* Accelerometer.m */; };
 		BB9CC80F1AE0A707008A1D08 /* Magnetometer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9CC80D1AE0A707008A1D08 /* Magnetometer.m */; };
+		FF4578261D60724200F5D682 /* DeviceMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4578241D60724200F5D682 /* DeviceMotion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		BB9CC80B1AE0A707008A1D08 /* Accelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Accelerometer.m; sourceTree = "<group>"; };
 		BB9CC80C1AE0A707008A1D08 /* Magnetometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnetometer.h; sourceTree = "<group>"; };
 		BB9CC80D1AE0A707008A1D08 /* Magnetometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Magnetometer.m; sourceTree = "<group>"; };
+		FF4578241D60724200F5D682 /* DeviceMotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceMotion.m; sourceTree = "<group>"; };
+		FF4578251D60724200F5D682 /* DeviceMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceMotion.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 		BB9CC7EF1AE0A2EB008A1D08 /* RNMotionManager */ = {
 			isa = PBXGroup;
 			children = (
+				FF4578241D60724200F5D682 /* DeviceMotion.m */,
+				FF4578251D60724200F5D682 /* DeviceMotion.h */,
 				BB9CC8071AE0A5FE008A1D08 /* Gyroscope.m */,
 				BB9CC8091AE0A614008A1D08 /* Gyroscope.h */,
 				BB9CC80A1AE0A707008A1D08 /* Accelerometer.h */,
@@ -204,6 +209,7 @@
 				BB9CC80E1AE0A707008A1D08 /* Accelerometer.m in Sources */,
 				BB9CC80F1AE0A707008A1D08 /* Magnetometer.m in Sources */,
 				BB9CC8081AE0A5FE008A1D08 /* Gyroscope.m in Sources */,
+				FF4578261D60724200F5D682 /* DeviceMotion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
