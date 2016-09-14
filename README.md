@@ -60,7 +60,7 @@ Gyroscope.stopGyroUpdates();
 
 ### Magnetometer
 ```js
-Magnetometer.setAccelerometerUpdateInterval(0.1); // in seconds
+Magnetometer.setMagnetometerUpdateInterval(0.1); // in seconds
 DeviceEventEmitter.addListener('MagnetometerData', function (data) {
   /**
   * data.magneticField.x
