@@ -42,7 +42,7 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(setAccelerometerUpdateInterval:(double) interval) {
   NSLog(@"setAccelerometerUpdateInterval: %f", interval);
-  
+
   [self->_motionManager setAccelerometerUpdateInterval:interval];
 }
 
@@ -56,14 +56,16 @@ RCT_EXPORT_METHOD(getAccelerometerData:(RCTResponseSenderBlock) cb) {
   double x = self->_motionManager.accelerometerData.acceleration.x;
   double y = self->_motionManager.accelerometerData.acceleration.y;
   double z = self->_motionManager.accelerometerData.acceleration.z;
-  
-  NSLog(@"getAccelerometerData: %f, %f, %f", x, y, z);
-  
+  double timestamp = self->_motionManager.accelerometerData.timestamp;
+
+  NSLog(@"getAccelerometerData: %f, %f, %f, %f", x, y, z, timestamp);
+
   cb(@[[NSNull null], @{
          @"acceleration": @{
              @"x" : [NSNumber numberWithDouble:x],
              @"y" : [NSNumber numberWithDouble:y],
-             @"z" : [NSNumber numberWithDouble:z]
+             @"z" : [NSNumber numberWithDouble:z],
+             @"timestamp" : [NSNumber numberWithDouble:timestamp]
              }
          }]
      );
@@ -72,7 +74,7 @@ RCT_EXPORT_METHOD(getAccelerometerData:(RCTResponseSenderBlock) cb) {
 RCT_EXPORT_METHOD(startAccelerometerUpdates) {
   NSLog(@"startAccelerometerUpdates");
   [self->_motionManager startAccelerometerUpdates];
-  
+
   /* Receive the ccelerometer data on this block */
   [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
                                     withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
@@ -80,17 +82,19 @@ RCT_EXPORT_METHOD(startAccelerometerUpdates) {
      double x = accelerometerData.acceleration.x;
      double y = accelerometerData.acceleration.y;
      double z = accelerometerData.acceleration.z;
-     NSLog(@"startAccelerometerUpdates: %f, %f, %f", x, y, z);
-     
+     double timestamp = accelerometerData.timestamp;
+     NSLog(@"startAccelerometerUpdates: %f, %f, %f, %f", x, y, z, timestamp);
+
      [self.bridge.eventDispatcher sendDeviceEventWithName:@"AccelerationData" body:@{
                                                                              @"acceleration": @{
                                                                                  @"x" : [NSNumber numberWithDouble:x],
                                                                                  @"y" : [NSNumber numberWithDouble:y],
-                                                                                 @"z" : [NSNumber numberWithDouble:z]
+                                                                                 @"z" : [NSNumber numberWithDouble:z],
+                                                                                 @"timestamp" : [NSNumber numberWithDouble:timestamp]
                                                                                  }
                                                                              }];
    }];
-  
+
 }
 
 RCT_EXPORT_METHOD(stopAccelerometerUpdates) {

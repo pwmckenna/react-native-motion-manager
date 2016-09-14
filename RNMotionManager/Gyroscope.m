@@ -17,7 +17,7 @@ RCT_EXPORT_MODULE();
 - (id) init {
     self = [super init];
     NSLog(@"Gyroscope");
-    
+
     if (self) {
         self->_motionManager = [[CMMotionManager alloc] init];
         //Gyroscope
@@ -42,7 +42,7 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(setGyroUpdateInterval:(double) interval) {
     NSLog(@"setGyroUpdateInterval: %f", interval);
-    
+
     [self->_motionManager setGyroUpdateInterval:interval];
 }
 
@@ -56,14 +56,16 @@ RCT_EXPORT_METHOD(getGyroData:(RCTResponseSenderBlock) cb) {
     double x = self->_motionManager.gyroData.rotationRate.x;
     double y = self->_motionManager.gyroData.rotationRate.y;
     double z = self->_motionManager.gyroData.rotationRate.z;
-    
-    NSLog(@"getGyroData: %f, %f, %f", x, y, z);
-    
+    double timestamp = self->_motionManager.gyroData.timestamp;
+
+    NSLog(@"getGyroData: %f, %f, %f, %f", x, y, z, timestamp);
+
     cb(@[[NSNull null], @{
              @"rotationRate": @{
                      @"x" : [NSNumber numberWithDouble:x],
                      @"y" : [NSNumber numberWithDouble:y],
-                     @"z" : [NSNumber numberWithDouble:z]
+                     @"z" : [NSNumber numberWithDouble:z],
+                     @"timestamp" : [NSNumber numberWithDouble:timestamp]
                      }
              }]
        );
@@ -72,7 +74,7 @@ RCT_EXPORT_METHOD(getGyroData:(RCTResponseSenderBlock) cb) {
 RCT_EXPORT_METHOD(startGyroUpdates) {
     NSLog(@"startGyroUpdates");
     [self->_motionManager startGyroUpdates];
-    
+
     /* Receive the gyroscope data on this block */
     [self->_motionManager startGyroUpdatesToQueue:[NSOperationQueue mainQueue]
                                       withHandler:^(CMGyroData *gyroData, NSError *error)
@@ -80,17 +82,19 @@ RCT_EXPORT_METHOD(startGyroUpdates) {
          double x = gyroData.rotationRate.x;
          double y = gyroData.rotationRate.y;
          double z = gyroData.rotationRate.z;
-         NSLog(@"startGyroUpdates: %f, %f, %f", x, y, z);
-         
+         double timestamp = gyroData.timestamp;
+         NSLog(@"startGyroUpdates: %f, %f, %f, %f", x, y, z, timestamp);
+
          [self.bridge.eventDispatcher sendDeviceEventWithName:@"GyroData" body:@{
                                                                                  @"rotationRate": @{
                                                                                          @"x" : [NSNumber numberWithDouble:x],
                                                                                          @"y" : [NSNumber numberWithDouble:y],
-                                                                                         @"z" : [NSNumber numberWithDouble:z]
+                                                                                         @"z" : [NSNumber numberWithDouble:z],
+                                                                                         @"timestamp" : [NSNumber numberWithDouble:timestamp]
                                                                                          }
                                                                                  }];
      }];
-    
+
 }
 
 RCT_EXPORT_METHOD(stopGyroUpdates) {
