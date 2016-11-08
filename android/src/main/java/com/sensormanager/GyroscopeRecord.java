@@ -9,7 +9,6 @@ import android.util.Log;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
@@ -21,18 +20,11 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
 
     private SensorManager mSensorManager;
     private Sensor mGyroscope;
-    private long lastUpdate = 0;
-    private int i = 0;
-	private int delay;
-
-	private ReactContext mReactContext;
-	private Arguments mArguments;
-
+	private double delaySeconds;
 
     public GyroscopeRecord(ReactApplicationContext reactContext) {
         super(reactContext);
         mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-		mReactContext = reactContext;
     }
 
     @Override
@@ -40,23 +32,41 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
         return "Gyroscope";
     }
 
+//    @ReactMethod
+//    public void setMinReportedX(double minReportedValue) {
+//
+//    }
+//
+//    @ReactMethod
+//    public void setMinReported(double minReportedValue) {
+//
+//    }
+//
+//    @ReactMethod
+//    public void setMinReportedY(double minReportedValue) {
+//
+//    }
+
     /**
-     * @param delay Delay in milliseconds.
+     * @param delaySeconds Delay in seconds and/or fractions of a second.
      */
     @ReactMethod
-    public void setGyroUpdateInterval(int delay) {
-        this.delay = delay;
+    public void setGyroUpdateInterval(double delaySeconds) {
+        this.delaySeconds = delaySeconds;
     }
 
+    /**
+     * @return true if Gyroscope exists on device, false if it does not exist and so could not be started.
+     */
     @ReactMethod
-	public int startGyroUpdates() {
-
+	public boolean startGyroUpdates() {
         if ((mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)) != null) {
-            int uSecs =(int) TimeUnit.MICROSECONDS.convert(this.delay, TimeUnit.MILLISECONDS);
-			mSensorManager.registerListener(this, mGyroscope, uSecs);
-			return (1);
+            int uSecs = (int) (this.delaySeconds * TimeUnit.MICROSECONDS.convert(1, TimeUnit.SECONDS));
+            Log.e("SENSE", "Registering with " + uSecs);
+			mSensorManager.registerListener(this, mGyroscope, uSecs, uSecs);
+			return true;
 		}
-		return (0);
+		return false;
 	}
 
     @ReactMethod
@@ -67,7 +77,7 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
 	private void sendEvent(String eventName, @Nullable WritableMap params)
 	{
 		try {
-			mReactContext
+			getReactApplicationContext()
 				.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class) 
 				.emit(eventName, params);
 		} catch (RuntimeException e) {
@@ -78,12 +88,15 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         Sensor mySensor = sensorEvent.sensor;
-		WritableMap map = mArguments.createMap();
-
         if (mySensor.getType() == Sensor.TYPE_GYROSCOPE) {
-            map.putDouble("x", sensorEvent.values[0]);
-            map.putDouble("y", sensorEvent.values[1]);
-            map.putDouble("z", sensorEvent.values[2]);
+		    WritableMap map = Arguments.createMap();
+            WritableMap rotationRate = Arguments.createMap();
+
+            rotationRate.putDouble("x", sensorEvent.values[0]);
+            rotationRate.putDouble("y", sensorEvent.values[1]);
+            rotationRate.putDouble("z", sensorEvent.values[2]);
+            map.putMap("rotationRate", rotationRate);
+
             sendEvent("GyroData", map);
         }
     }
