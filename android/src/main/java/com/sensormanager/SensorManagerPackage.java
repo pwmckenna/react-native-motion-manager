@@ -16,7 +16,7 @@ public class SensorManagerPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new SensorManagerModule(reactContext));
+        modules.add(new GyroscopeRecord(reactContext));
         return modules;
     }
 

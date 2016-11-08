@@ -47,19 +47,6 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public int startGyroscope(int delay) {
-		if (mGyroscopeRecord == null)
-			mGyroscopeRecord = new GyroscopeRecord(mReactContext);
-		return (mGyroscopeRecord.start(delay));
-    }
-
-    @ReactMethod
-    public void stopGyroscope() {
-		if (mGyroscopeRecord != null)
-			mGyroscopeRecord.stop();
-    }
-
-    @ReactMethod
     public int startMagnetometer(int delay) {
 		if (mMagnetometerRecord == null)
 			mMagnetometerRecord = new MagnetometerRecord(mReactContext);
