@@ -16,6 +16,8 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import java.util.concurrent.TimeUnit;
 
+import timber.log.Timber;
+
 public class GyroscopeRecord extends ReactContextBaseJavaModule implements SensorEventListener {
 
     private SensorManager mSensorManager;
@@ -32,21 +34,6 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
         return "Gyroscope";
     }
 
-//    @ReactMethod
-//    public void setMinReportedX(double minReportedValue) {
-//
-//    }
-//
-//    @ReactMethod
-//    public void setMinReported(double minReportedValue) {
-//
-//    }
-//
-//    @ReactMethod
-//    public void setMinReportedY(double minReportedValue) {
-//
-//    }
-
     /**
      * @param delaySeconds Delay in seconds and/or fractions of a second.
      */
@@ -62,15 +49,22 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
 	public boolean startGyroUpdates() {
         if ((mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)) != null) {
             int uSecs = (int) (this.delaySeconds * TimeUnit.MICROSECONDS.convert(1, TimeUnit.SECONDS));
-            Log.e("SENSE", "Registering with " + uSecs);
-			mSensorManager.registerListener(this, mGyroscope, uSecs, uSecs);
+            Timber.d("Registering gyro with %s ms for ", uSecs, this);
+            /*
+             * Do not use this version (in API 19) to save battery:
+             * public boolean registerListener(SensorEventListener listener, Sensor sensor, int samplingPeriodUs, int maxReportLatencyUs) {
+             * As it reports erratic data.
+             */
+			mSensorManager.registerListener(this, mGyroscope, uSecs);
 			return true;
 		}
+        Timber.d("No gryoscope sensor");
 		return false;
 	}
 
     @ReactMethod
     public void stopGyroUpdates() {
+        Timber.d("Stopping gyro updates for", this);
         mSensorManager.unregisterListener(this);
     }
 
@@ -103,6 +97,13 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    @Override
+    public void onCatalystInstanceDestroy() {
+        Timber.d("Stopping gyro updates because catalyst is destroyed for %s", this);
+        stopGyroUpdates();
+        super.onCatalystInstanceDestroy();
     }
 
 }

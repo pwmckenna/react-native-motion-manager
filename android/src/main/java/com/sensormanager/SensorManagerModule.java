@@ -12,7 +12,6 @@ import android.util.Log;
 public class SensorManagerModule extends ReactContextBaseJavaModule {
     private static final String		REACT_CLASS = "SensorManager";
     private AccelerometerRecord		mAccelerometerRecord = null;
-	private GyroscopeRecord 		mGyroscopeRecord = null;
 	private MagnetometerRecord		mMagnetometerRecord = null;
 	private StepCounterRecord		mStepCounterRecord = null;
 	private ThermometerRecord		mThermometerRecord = null;
