@@ -1,84 +1,69 @@
 package com.sensormanager;
 
-import android.os.Bundle;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.util.Log;
-import android.support.annotation.Nullable;
 
-import java.io.*;
-import java.util.Date;
-import java.util.Timer;
-
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactMethod;
 
-public class MagnetometerRecord implements SensorEventListener {
+import java.util.HashMap;
+import java.util.Map;
 
-    private SensorManager mSensorManager;
-    private Sensor mMagnetometer;
-    private long lastUpdate = 0;
-    private int i = 0, n = 0;
-	private int delay;
+public class MagnetometerRecord extends SensorRecord {
 
-	private ReactContext mReactContext;
-	private Arguments mArguments;
+	private static final String MAGNETIC_FIELD_KEY = "magneticField";
+	private static final String MAGNETOMETER_EVENT_KEY = "MagnetometerData";
 
-
-    public MagnetometerRecord(ReactApplicationContext reactContext) {
-        mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-		mReactContext = reactContext;
-    }
-
-	public int start(int delay) {
-		this.delay = delay;
-		if ((mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)) != null) {
-			mSensorManager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_FASTEST);
-			return (1);
-		}
-		return (0);
+	public MagnetometerRecord(ReactApplicationContext reactContext) {
+		super(reactContext);
 	}
 
-    public void stop() {
-        mSensorManager.unregisterListener(this);
-    }
-
-	private void sendEvent(String eventName, @Nullable WritableMap params)
-	{
-		try {
-			mReactContext 
-				.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class) 
-				.emit(eventName, params);
-		} catch (RuntimeException e) {
-			Log.e("ERROR", "java.lang.RuntimeException: Trying to invoke JS before CatalystInstance has been set!");
-		}
+	@Override
+	public String getName() {
+		return "Magnetometer";
 	}
 
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        Sensor mySensor = sensorEvent.sensor;
-		WritableMap map = mArguments.createMap();
+	@javax.annotation.Nullable
+	@Override
+	public Map<String, Object> getConstants() {
+		final Map<String, Object> constants = new HashMap<>();
+		constants.put(MAGNETIC_FIELD_KEY, MAGNETIC_FIELD_KEY);
+		constants.put(MAGNETOMETER_EVENT_KEY, MAGNETOMETER_EVENT_KEY);
+		return super.getConstants();
+	}
 
-        if (mySensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-            long curTime = System.currentTimeMillis();
-            i++;
-            if ((curTime - lastUpdate) > 92) {
-                i = 0;
-				map.putDouble("x", sensorEvent.values[0]);
-				map.putDouble("y", sensorEvent.values[1]);
-				map.putDouble("z", sensorEvent.values[2]);
-				sendEvent("Magnetometer", map);
-                lastUpdate = curTime;
-            }
-        }
-    }
+	@Override
+	protected int getSensorType() {
+		return Sensor.TYPE_MAGNETIC_FIELD;
+	}
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+	@Override
+	protected String getEventNameKey() {
+		return MAGNETOMETER_EVENT_KEY;
+	}
+
+	@Override
+	protected String getDataMapKey() {
+		return MAGNETIC_FIELD_KEY;
+	}
+
+	/**
+	 * @param delaySeconds Delay in seconds and/or fractions of a second.
+	 */
+	@ReactMethod
+	public void setMagnetometerUpdateInterval(double delaySeconds) {
+		setUpdateDelay(delaySeconds);
+	}
+
+	/**
+	 * @return true if Magnetometer exists on device, false if it does not exist and so could not be started.
+	 */
+	@ReactMethod
+	public boolean startMagnetometerUpdates() {
+		return startUpdates();
+	}
+
+	@ReactMethod
+	public void stopMagnetometerUpdates() {
+		stopUpdates();
+	}
 }

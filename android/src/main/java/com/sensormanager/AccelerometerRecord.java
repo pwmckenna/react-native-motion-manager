@@ -1,90 +1,70 @@
 package com.sensormanager;
 
-import android.os.Bundle;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.util.Log;
-import android.support.annotation.Nullable;
 
-import java.io.*;
-import java.util.Date;
-import java.util.Timer;
-
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactMethod;
 
-public class AccelerometerRecord implements SensorEventListener {
+import java.util.HashMap;
+import java.util.Map;
 
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
-    private long lastUpdate = 0;
-    private int i = 0, n = 0;
-	private int delay;
-	private int isRegistered = 0;
+public class AccelerometerRecord extends SensorRecord {
 
-	private ReactContext mReactContext;
-	private Arguments mArguments;
-
+    private static final String ACCELERATION_KEY = "acceleration";
+    private static final String ACCELEROMETER_EVENT_KEY = "AccelerationData";
 
     public AccelerometerRecord(ReactApplicationContext reactContext) {
-        mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		mReactContext = reactContext;
-    }
-
-	public int start(int delay) {
-		this.delay = delay;
-		if (mAccelerometer != null && isRegistered == 0) {
-			mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
-			isRegistered = 1;
-			return (1);
-		}
-		return (0);
-	}
-
-    public void stop() {
-		if (isRegistered == 1) {
-			mSensorManager.unregisterListener(this);
-			isRegistered = 0;
-		}
-    }
-
-	private void sendEvent(String eventName, @Nullable WritableMap params)
-	{
-		try {
-			mReactContext 
-				.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class) 
-				.emit(eventName, params);
-		} catch (RuntimeException e) {
-			Log.e("ERROR", "java.lang.RuntimeException: Trying to invoke JS before CatalystInstance has been set!");
-		}
-	}
-
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        Sensor mySensor = sensorEvent.sensor;
-		WritableMap map = mArguments.createMap();
-
-        if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            long curTime = System.currentTimeMillis();
-            i++;
-            if ((curTime - lastUpdate) > delay) {
-                i = 0;
-				map.putDouble("x", sensorEvent.values[0]);
-				map.putDouble("y", sensorEvent.values[1]);
-				map.putDouble("z", sensorEvent.values[2]);
-				sendEvent("Accelerometer", map);
-                lastUpdate = curTime;
-            }
-        }
+        super(reactContext);
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    public String getName() {
+        return "Accelerometer";
     }
+
+    @javax.annotation.Nullable
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> constants = new HashMap<>();
+        constants.put(ACCELERATION_KEY, ACCELERATION_KEY);
+        constants.put(ACCELEROMETER_EVENT_KEY, ACCELEROMETER_EVENT_KEY);
+        return super.getConstants();
+    }
+
+    @Override
+    protected int getSensorType() {
+        return Sensor.TYPE_ACCELEROMETER;
+    }
+
+    @Override
+    protected String getEventNameKey() {
+        return ACCELEROMETER_EVENT_KEY;
+    }
+
+    @Override
+    protected String getDataMapKey() {
+        return ACCELERATION_KEY;
+    }
+
+    /**
+     * @param delaySeconds Delay in seconds and/or fractions of a second.
+     */
+    @ReactMethod
+    public void setAccelerometerUpdateInterval(double delaySeconds) {
+        setUpdateDelay(delaySeconds);
+    }
+
+    /**
+     * @return true if Gyroscope exists on device, false if it does not exist and so could not be started.
+     */
+    @ReactMethod
+    public boolean startAccelerometerUpdates() {
+        return startUpdates();
+    }
+
+    @ReactMethod
+    public void stopAccelerometerUpdates() {
+        stopUpdates();
+    }
+
 }
