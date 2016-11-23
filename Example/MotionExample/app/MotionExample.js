@@ -18,20 +18,16 @@ var MagnetometerManager = require('./../components/Magnetometer');
 
 const ROUTES = {
     motion: {
-        title: 'Motion',
-        component: MotionExample
+        title: 'Motion'
     },
     gyroscope: {
-        title: 'Gyroscope',
-        component: GyroscopeManager
+        component: (<GyroscopeManager/>)
     },
     accelerometer: {
-        title: 'Accelerometer',
-        component: AccelerometerManager
+        component: (<AccelerometerManager/>)
     },
     magnetometer: {
-        title: 'Magnetometer',
-        component: MagnetometerManager
+        component: (<MagnetometerManager/>)
     }
 };
 
@@ -52,9 +48,18 @@ class MotionExample extends Component {
                 flex: 1,
                 paddingTop: 100,
               }}>
-                <Button onPress={() => this.handleNavigationPress(ROUTES.accelerometer)}>Accelerometer</Button>
-                <Button onPress={() => this.handleNavigationPress(ROUTES.gyroscope)}>Gyroscope</Button>
-                <Button onPress={() => this.handleNavigationPress(ROUTES.magnetometer)}>Magnetometer</Button>
+                <Button style={{fontSize: 30}}
+                        onPress={() => this.handleNavigationPress(ROUTES.accelerometer)}>
+                    Accelerometer
+                </Button>
+                <Button style={{fontSize: 30}}
+                        onPress={() => this.handleNavigationPress(ROUTES.gyroscope)}>
+                    Gyroscope
+                </Button>
+                <Button style={{fontSize: 30}}
+                        onPress={() => this.handleNavigationPress(ROUTES.magnetometer)}>
+                    Magnetometer
+                </Button>
             </View>
         );
     }
@@ -74,12 +79,8 @@ class App extends Component {
                      if (route.title == 'Motion') {
                          return (<MotionExample navigator={navigator}/>)
                      }
-                     else if (route.title == 'Gyroscope') {
-                         return (<GyroscopeManager/>)
-                     } else if (route.title == 'Accelerometer') {
-                         return (<AccelerometerManager/>)
-                     } else if (route.title == 'Magnetometer') {
-                        return (<MagnetometerManager/>)
+                     else {
+                         return route.component;
                      }
                 }}
                 style={{
