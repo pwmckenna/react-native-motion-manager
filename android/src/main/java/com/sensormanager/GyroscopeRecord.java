@@ -14,19 +14,19 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import timber.log.Timber;
 
-public class GyroscopeRecord extends ReactContextBaseJavaModule implements SensorEventListener {
+public class GyroscopeRecord extends SensorRecord {
 
-    private SensorManager mSensorManager;
-    private Sensor mGyroscope;
-	private double delaySeconds;
+    private static final String ROTATION_RATE_KEY = "rotationRate";
+    private static final String GYRO_EVENT_KEY = "GyroData";
 
     public GyroscopeRecord(ReactApplicationContext reactContext) {
         super(reactContext);
-        mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
     }
 
     @Override
@@ -34,12 +34,36 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
         return "Gyroscope";
     }
 
+    @javax.annotation.Nullable
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> constants = new HashMap<>();
+        constants.put(ROTATION_RATE_KEY, ROTATION_RATE_KEY);
+        constants.put(GYRO_EVENT_KEY, GYRO_EVENT_KEY);
+        return super.getConstants();
+    }
+
+    @Override
+    protected int getSensorType() {
+        return Sensor.TYPE_GYROSCOPE;
+    }
+
+    @Override
+    protected String getEventNameKey() {
+        return GYRO_EVENT_KEY;
+    }
+
+    @Override
+    protected String getDataMapKey() {
+        return ROTATION_RATE_KEY;
+    }
+
     /**
      * @param delaySeconds Delay in seconds and/or fractions of a second.
      */
     @ReactMethod
     public void setGyroUpdateInterval(double delaySeconds) {
-        this.delaySeconds = delaySeconds;
+        setUpdateDelay(delaySeconds);
     }
 
     /**
@@ -47,63 +71,12 @@ public class GyroscopeRecord extends ReactContextBaseJavaModule implements Senso
      */
     @ReactMethod
 	public boolean startGyroUpdates() {
-        if ((mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)) != null) {
-            int uSecs = (int) (this.delaySeconds * TimeUnit.MICROSECONDS.convert(1, TimeUnit.SECONDS));
-            Timber.d("Registering gyro with %s ms for ", uSecs, this);
-            /*
-             * Do not use this version (in API 19) to save battery:
-             * public boolean registerListener(SensorEventListener listener, Sensor sensor, int samplingPeriodUs, int maxReportLatencyUs) {
-             * As it reports erratic data.
-             */
-			mSensorManager.registerListener(this, mGyroscope, uSecs);
-			return true;
-		}
-        Timber.d("No gryoscope sensor");
-		return false;
+        return startUpdates();
 	}
 
     @ReactMethod
     public void stopGyroUpdates() {
-        Timber.d("Stopping gyro updates for", this);
-        mSensorManager.unregisterListener(this);
-    }
-
-	private void sendEvent(String eventName, @Nullable WritableMap params)
-	{
-		try {
-			getReactApplicationContext()
-				.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class) 
-				.emit(eventName, params);
-		} catch (RuntimeException e) {
-			Log.e("ERROR", "java.lang.RuntimeException: Trying to invoke JS before CatalystInstance has been set!", e);
-		}
-	}
-
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        Sensor mySensor = sensorEvent.sensor;
-        if (mySensor.getType() == Sensor.TYPE_GYROSCOPE) {
-		    WritableMap map = Arguments.createMap();
-            WritableMap rotationRate = Arguments.createMap();
-
-            rotationRate.putDouble("x", sensorEvent.values[0]);
-            rotationRate.putDouble("y", sensorEvent.values[1]);
-            rotationRate.putDouble("z", sensorEvent.values[2]);
-            map.putMap("rotationRate", rotationRate);
-
-            sendEvent("GyroData", map);
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    @Override
-    public void onCatalystInstanceDestroy() {
-        Timber.d("Stopping gyro updates because catalyst is destroyed for %s", this);
-        stopGyroUpdates();
-        super.onCatalystInstanceDestroy();
+        stopUpdates();
     }
 
 }

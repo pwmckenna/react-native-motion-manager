@@ -5,13 +5,13 @@
  */
 'use strict';
 
-var React = require('react-native');
-var Button = require('react-native-button');
-var {
+import React from 'react';
+import Button from 'react-native-button';
+import {
   Text,
   View,
   DeviceEventEmitter
-} = React;
+} from 'react-native'
 
 var {
     Gyroscope
