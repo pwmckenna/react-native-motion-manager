@@ -1,53 +1,80 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ * MotionManger
+ *
+ * Created by Patrick Williams in beautiful Seattle, WA.
  */
+'use strict';
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
-  View
+  View,
+  NavigatorIOS,
+  TouchableHighlight,
+  DeviceEventEmitter
 } from 'react-native';
+import Button from 'react-native-button';
 
-export default class MotionExample extends Component {
+var GyroscopeManager = require('./components/GyroscopeManager');
+var AccelerometerManager = require('./components/AccelerometerManager');
+var MagnetometerManager = require('./components/Magnetometer');
+
+var routes = {
+  gyroscope: {
+    title: 'Gyroscope',
+    component: GyroscopeManager
+  },
+  accelerometer: {
+    title: 'Accelerometer',
+    component: AccelerometerManager
+  },
+  magnetometer: {
+    title: 'Magnetometer',
+    component: MagnetometerManager
+  }
+};
+
+class MotionExample extends Component {
+  constructor(props) {
+    super(props);
+  }
+  handleNavigationPress(route) {
+    this.props.navigator.push(route);
+  }
+  _handlePress() {
+    console.log('Pressed!');
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={{
+        flex: 1,
+        paddingTop: 100,
+      }}>
+        <Button onPress={this.handleNavigationPress.bind(this, routes.accelerometer)}>Accelerometer</Button>
+        <Button onPress={this.handleNavigationPress.bind(this, routes.gyroscope)}>Gyroscope</Button>
+        <Button onPress={this.handleNavigationPress.bind(this, routes.magnetometer)}>Magnetometer</Button>
       </View>
     );
   }
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+routes.motion = {
+  title: 'Motion',
+  component: MotionExample
+};
 
-AppRegistry.registerComponent('MotionExample', () => MotionExample);
+class App extends Component {
+  render() {
+    return (
+      <NavigatorIOS
+        style={{
+          flex: 1,
+          backgroundColor: '#ffffff'
+        }}
+        initialRoute={routes.motion} />
+    );
+  }
+};
+
+AppRegistry.registerComponent('MotionExample', () => App)
