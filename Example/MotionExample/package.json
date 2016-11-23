@@ -1,27 +1,23 @@
 {
-  "name": "react_native_motion_manager",
+  "name": "MotionExample",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
-    "react": "15.3.1",
-    "react-native": "0.37.0",
-    "react-native-button": "^1.0.0",
-    "react-native-motion-manager": "../.."
+    "react": "15.4.1",
+    "react-native": "0.38.0",
+    "react-native-motion-manager": "file:../.."
   },
-  "description": "React Native wrapper for native iOS CMMotionManager",
-  "main": "index.ios.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pwmckenna/react-native-motion-manager.git"
+  "jest": {
+    "preset": "react-native"
   },
-  "author": "Patrick Williams <pwmckenna@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pwmckenna/react-native-motion-manager/issues"
-  },
-  "homepage": "https://github.com/pwmckenna/react-native-motion-manager"
+  "devDependencies": {
+    "babel-jest": "17.0.2",
+    "babel-preset-react-native": "1.9.0",
+    "jest": "17.0.3",
+    "react-test-renderer": "15.4.1"
+  }
 }
