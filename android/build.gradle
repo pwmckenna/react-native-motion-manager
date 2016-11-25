@@ -30,6 +30,7 @@ repositories {
 }
 
 dependencies {
+    compile project(':react-native-connected-common')
     compile 'com.facebook.react:react-native:0.20.1'
     compile 'com.jakewharton.timber:timber:4.3.1'
 }

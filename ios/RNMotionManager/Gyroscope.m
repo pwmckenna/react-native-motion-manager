@@ -71,7 +71,7 @@ RCT_EXPORT_METHOD(getGyroData:(RCTResponseSenderBlock) cb) {
        );
 }
 
-RCT_EXPORT_METHOD(startGyroUpdates) {
+RCT_EXPORT_METHOD(startGyroUpdates:(RCTResponseSenderBlock) cb) {
     NSLog(@"startGyroUpdates");
     [self->_motionManager startGyroUpdates];
 
@@ -94,7 +94,7 @@ RCT_EXPORT_METHOD(startGyroUpdates) {
                                                                                          }
                                                                                  }];
      }];
-
+    cb(@[[NSNull null]]);
 }
 
 RCT_EXPORT_METHOD(stopGyroUpdates) {

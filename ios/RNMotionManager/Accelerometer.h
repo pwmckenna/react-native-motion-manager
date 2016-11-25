@@ -13,7 +13,7 @@
 - (void) setAccelerometerUpdateInterval:(double) interval;
 - (void) getAccelerometerUpdateInterval:(RCTResponseSenderBlock) cb;
 - (void) getAccelerometerData:(RCTResponseSenderBlock) cb;
-- (void) startAccelerometerUpdates;
+- (void) startAccelerometerUpdates:(RCTResponseSenderBlock) cb;
 - (void) stopAccelerometerUpdates;
 
 @end

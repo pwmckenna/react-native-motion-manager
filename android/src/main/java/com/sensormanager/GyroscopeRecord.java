@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -32,15 +33,6 @@ public class GyroscopeRecord extends SensorRecord {
     @Override
     public String getName() {
         return "Gyroscope";
-    }
-
-    @javax.annotation.Nullable
-    @Override
-    public Map<String, Object> getConstants() {
-        final Map<String, Object> constants = new HashMap<>();
-        constants.put(ROTATION_RATE_KEY, ROTATION_RATE_KEY);
-        constants.put(GYRO_EVENT_KEY, GYRO_EVENT_KEY);
-        return super.getConstants();
     }
 
     @Override
@@ -70,9 +62,9 @@ public class GyroscopeRecord extends SensorRecord {
      * @return true if Gyroscope exists on device, false if it does not exist and so could not be started.
      */
     @ReactMethod
-	public boolean startGyroUpdates() {
-        return startUpdates();
-	}
+	public void startGyroUpdates(Callback onStarted) {
+        startUpdates(onStarted);
+    }
 
     @ReactMethod
     public void stopGyroUpdates() {

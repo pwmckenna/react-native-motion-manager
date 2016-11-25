@@ -13,7 +13,7 @@
 - (void) setMagnetometerUpdateInterval:(double) interval;
 - (void) getMagnetometerUpdateInterval:(RCTResponseSenderBlock) cb;
 - (void) getMagnetometerData:(RCTResponseSenderBlock) cb;
-- (void) startMagnetometerUpdates;
+- (void) startMagnetometerUpdates:(RCTResponseSenderBlock) cb;
 - (void) stopMagnetometerUpdates;
 
 @end
