@@ -50,8 +50,9 @@ public abstract class SensorRecord extends ReactContextBaseJavaModule implements
              */
             sensorManager.registerListener(this, sensor, uSecs);
             onStarted.invoke((Object) null);
+        } else {
+            onStarted.invoke(new ErrorBuilder().toJavaScriptError("No " + getName() + " sensor"));
         }
-        onStarted.invoke(new ErrorBuilder().toJavaScriptError("No " + getName() + " sensor"));
     }
 
     protected void stopUpdates() {
