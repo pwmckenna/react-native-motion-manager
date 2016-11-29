@@ -9,11 +9,11 @@ If you just want to see this code in action, checkout the code and fire up the x
 
 If you're trying to integrate this into your app, its a little bit tricky. I don't quite know how to package this up so you can just `npm install` it. Coming soon though!
 
-At this point, just copy and paste `iOS/Accelerometer.h` + `iOS/Accelerometer.m` (or Gyroscope or Magnetomer) into your `iOS` folder.  
+At this point, just copy and paste `iOS/Accelerometer.h` + `iOS/Accelerometer.m` (or Gyroscope or Magnetomer) into your `iOS` folder.
 
 
-Does anyone know how to share react-native components that are wrappers around native utilities?  
-There must be a better way to package this stuff...  
+Does anyone know how to share react-native components that are wrappers around native utilities?
+There must be a better way to package this stuff...
 
 # Api
 
