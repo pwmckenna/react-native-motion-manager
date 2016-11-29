@@ -2,6 +2,7 @@ package com.sensormanager;
 
 import android.hardware.Sensor;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
 
@@ -20,15 +21,6 @@ public class AccelerometerRecord extends SensorRecord {
     @Override
     public String getName() {
         return "Accelerometer";
-    }
-
-    @javax.annotation.Nullable
-    @Override
-    public Map<String, Object> getConstants() {
-        final Map<String, Object> constants = new HashMap<>();
-        constants.put(ACCELERATION_KEY, ACCELERATION_KEY);
-        constants.put(ACCELEROMETER_EVENT_KEY, ACCELEROMETER_EVENT_KEY);
-        return super.getConstants();
     }
 
     @Override
@@ -55,11 +47,12 @@ public class AccelerometerRecord extends SensorRecord {
     }
 
     /**
+     * @param onStarted(boolean success)
      * @return true if Gyroscope exists on device, false if it does not exist and so could not be started.
      */
     @ReactMethod
-    public boolean startAccelerometerUpdates() {
-        return startUpdates();
+    public void startAccelerometerUpdates(Callback onStarted) {
+        startUpdates(onStarted);
     }
 
     @ReactMethod

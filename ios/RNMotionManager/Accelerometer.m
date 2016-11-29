@@ -71,7 +71,7 @@ RCT_EXPORT_METHOD(getAccelerometerData:(RCTResponseSenderBlock) cb) {
      );
 }
 
-RCT_EXPORT_METHOD(startAccelerometerUpdates) {
+RCT_EXPORT_METHOD(startAccelerometerUpdates:(RCTResponseSenderBlock) cb) {
   NSLog(@"startAccelerometerUpdates");
   [self->_motionManager startAccelerometerUpdates];
 
@@ -94,7 +94,7 @@ RCT_EXPORT_METHOD(startAccelerometerUpdates) {
                                                                                  }
                                                                              }];
    }];
-
+    cb(@[[NSNull null]]);
 }
 
 RCT_EXPORT_METHOD(stopAccelerometerUpdates) {

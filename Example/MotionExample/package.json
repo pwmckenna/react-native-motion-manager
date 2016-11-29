@@ -10,7 +10,8 @@
     "react": "15.4.1",
     "react-native": "0.38.0",
     "react-native-motion-manager": "file:../..",
-    "react-native-button": "1.7.1"
+    "react-native-button": "1.7.1",
+    "react-native-video": "git://git@github.com:react-native-community/react-native-video.git"
   },
   "jest": {
     "preset": "react-native"

@@ -71,7 +71,7 @@ RCT_EXPORT_METHOD(getMagnetometerData:(RCTResponseSenderBlock) cb) {
      );
 }
 
-RCT_EXPORT_METHOD(startMagnetometerUpdates) {
+RCT_EXPORT_METHOD(startMagnetometerUpdates:(RCTResponseSenderBlock) cb) {
   NSLog(@"startMagnetometerUpdates");
   [self->_motionManager startMagnetometerUpdates];
 
@@ -94,7 +94,7 @@ RCT_EXPORT_METHOD(startMagnetometerUpdates) {
                                                                                          }
                                                                                      }];
    }];
-
+    cb(@[[NSNull null]]);
 }
 
 RCT_EXPORT_METHOD(stopMagnetometerUpdates) {

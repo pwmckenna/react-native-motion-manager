@@ -6,7 +6,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.annotation.Nullable;
 
+import com.connectedlab.reactnative.commonlib.ErrorBuilder;
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.WritableMap;
@@ -37,7 +39,7 @@ public abstract class SensorRecord extends ReactContextBaseJavaModule implements
         this.delaySeconds = delaySeconds;
     }
 
-    protected boolean startUpdates() {
+    protected void startUpdates(Callback onStarted) {
         if ((sensor = sensorManager.getDefaultSensor(getSensorType())) != null) {
             int uSecs = (int) (this.delaySeconds * TimeUnit.MICROSECONDS.convert(1, TimeUnit.SECONDS));
             Timber.d("Registering " + getName() + " with %s ms for ", uSecs, this);
@@ -47,10 +49,10 @@ public abstract class SensorRecord extends ReactContextBaseJavaModule implements
              * As it reports erratic data.
              */
             sensorManager.registerListener(this, sensor, uSecs);
-            return true;
+            onStarted.invoke((Object) null);
+        } else {
+            onStarted.invoke(new ErrorBuilder().toJavaScriptError("No " + getName() + " sensor"));
         }
-        Timber.d("No " + getName() + " sensor");
-        return false;
     }
 
     protected void stopUpdates() {

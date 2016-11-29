@@ -2,6 +2,7 @@ package com.sensormanager;
 
 import android.hardware.Sensor;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
 
@@ -20,15 +21,6 @@ public class MagnetometerRecord extends SensorRecord {
 	@Override
 	public String getName() {
 		return "Magnetometer";
-	}
-
-	@javax.annotation.Nullable
-	@Override
-	public Map<String, Object> getConstants() {
-		final Map<String, Object> constants = new HashMap<>();
-		constants.put(MAGNETIC_FIELD_KEY, MAGNETIC_FIELD_KEY);
-		constants.put(MAGNETOMETER_EVENT_KEY, MAGNETOMETER_EVENT_KEY);
-		return super.getConstants();
 	}
 
 	@Override
@@ -58,8 +50,8 @@ public class MagnetometerRecord extends SensorRecord {
 	 * @return true if Magnetometer exists on device, false if it does not exist and so could not be started.
 	 */
 	@ReactMethod
-	public boolean startMagnetometerUpdates() {
-		return startUpdates();
+	public void startMagnetometerUpdates(Callback onStarted) {
+		startUpdates(onStarted);
 	}
 
 	@ReactMethod

@@ -13,7 +13,7 @@
 - (void) setGyroUpdateInterval:(double) interval;
 - (void) getGyroUpdateInterval:(RCTResponseSenderBlock) cb;
 - (void) getGyroData:(RCTResponseSenderBlock) cb;
-- (void) startGyroUpdates;
+- (void) startGyroUpdates:(RCTResponseSenderBlock) cb;
 - (void) stopGyroUpdates;
 
 @end
