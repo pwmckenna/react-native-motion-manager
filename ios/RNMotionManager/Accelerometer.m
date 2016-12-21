@@ -8,7 +8,18 @@
 #import "RCTEventDispatcher.h"
 #import "Accelerometer.h"
 
+@interface Accelerometer()
+
+@property (nonatomic, readonly, nonnull) CMMotionManager* motionManager;
+
++ (NSDictionary*) dictionaryFromAccelerometerData:(CMAccelerometerData*)accelData;
+
+@end
+
+
 @implementation Accelerometer
+
+@synthesize motionManager = _motionManager;
 
 @synthesize bridge = _bridge;
 
@@ -21,11 +32,11 @@ RCT_EXPORT_MODULE();
   if (self) {
     self->_motionManager = [[CMMotionManager alloc] init];
     //Accelerometer
-    if([self->_motionManager isAccelerometerAvailable])
+    if(self.motionManager.accelerometerAvailable)
     {
       NSLog(@"Accelerometer available");
       /* Start the accelerometer if it is not active already */
-      if([self->_motionManager isAccelerometerActive] == NO)
+      if(self.motionManager.accelerometerActive)
       {
         NSLog(@"Accelerometer active");
       } else {
@@ -43,63 +54,54 @@ RCT_EXPORT_MODULE();
 RCT_EXPORT_METHOD(setAccelerometerUpdateInterval:(double) interval) {
   NSLog(@"setAccelerometerUpdateInterval: %f", interval);
 
-  [self->_motionManager setAccelerometerUpdateInterval:interval];
+  self.motionManager.accelerometerUpdateInterval = interval;
 }
 
-RCT_EXPORT_METHOD(getAccelerometerUpdateInterval:(RCTResponseSenderBlock) cb) {
-  double interval = self->_motionManager.accelerometerUpdateInterval;
+RCT_EXPORT_METHOD(getAccelerometerUpdateInterval:(nonnull RCTResponseSenderBlock) cb) {
+  double interval = self.motionManager.accelerometerUpdateInterval;
   NSLog(@"getAccelerometerUpdateInterval: %f", interval);
   cb(@[[NSNull null], [NSNumber numberWithDouble:interval]]);
 }
 
-RCT_EXPORT_METHOD(getAccelerometerData:(RCTResponseSenderBlock) cb) {
-  double x = self->_motionManager.accelerometerData.acceleration.x;
-  double y = self->_motionManager.accelerometerData.acceleration.y;
-  double z = self->_motionManager.accelerometerData.acceleration.z;
-  double timestamp = self->_motionManager.accelerometerData.timestamp;
+RCT_EXPORT_METHOD(getAccelerometerData:(nonnull RCTResponseSenderBlock) cb) {
+  CMAccelerometerData* accelerometerData = self.motionManager.accelerometerData;
+    
+  NSLog(@"getAccelerometerData: %f, %f, %f, %f", accelerometerData.acceleration.x, accelerometerData.acceleration.y, accelerometerData.acceleration.z, accelerometerData.timestamp);
 
-  NSLog(@"getAccelerometerData: %f, %f, %f, %f", x, y, z, timestamp);
-
-  cb(@[[NSNull null], @{
-         @"acceleration": @{
-             @"x" : [NSNumber numberWithDouble:x],
-             @"y" : [NSNumber numberWithDouble:y],
-             @"z" : [NSNumber numberWithDouble:z],
-             @"timestamp" : [NSNumber numberWithDouble:timestamp]
-             }
-         }]
-     );
+  cb(@[ [NSNull null], [Accelerometer dictionaryFromAccelerometerData: accelerometerData] ]);
 }
 
-RCT_EXPORT_METHOD(startAccelerometerUpdates:(RCTResponseSenderBlock) cb) {
+RCT_EXPORT_METHOD(startAccelerometerUpdates:(nonnull RCTResponseSenderBlock) cb) {
   NSLog(@"startAccelerometerUpdates");
-  [self->_motionManager startAccelerometerUpdates];
 
-  /* Receive the ccelerometer data on this block */
-  [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
-                                    withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
-   {
-     double x = accelerometerData.acceleration.x;
-     double y = accelerometerData.acceleration.y;
-     double z = accelerometerData.acceleration.z;
-     double timestamp = accelerometerData.timestamp;
-     NSLog(@"startAccelerometerUpdates: %f, %f, %f, %f", x, y, z, timestamp);
+  [self.motionManager startAccelerometerUpdates];
+  
+  /* Receive the accelerometer data on this block */
+  [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
+                                           withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
+    {
+     NSLog(@"startAccelerometerUpdates: %f, %f, %f, %f", accelerometerData.acceleration.x, accelerometerData.acceleration.y, accelerometerData.acceleration.z, accelerometerData.timestamp);
 
-     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AccelerationData" body:@{
-                                                                             @"acceleration": @{
-                                                                                 @"x" : [NSNumber numberWithDouble:x],
-                                                                                 @"y" : [NSNumber numberWithDouble:y],
-                                                                                 @"z" : [NSNumber numberWithDouble:z],
-                                                                                 @"timestamp" : [NSNumber numberWithDouble:timestamp]
-                                                                                 }
-                                                                             }];
+     [self.bridge.eventDispatcher sendDeviceEventWithName:@"AccelerationData" body:[Accelerometer dictionaryFromAccelerometerData: accelerometerData]];
    }];
-    cb(@[[NSNull null]]);
+    
+  cb(@[[NSNull null]]);
 }
 
 RCT_EXPORT_METHOD(stopAccelerometerUpdates) {
   NSLog(@"stopAccelerometerUpdates");
-  [self->_motionManager stopAccelerometerUpdates];
+  [self.motionManager stopAccelerometerUpdates];
+}
+
++ (NSDictionary*) dictionaryFromAccelerometerData:(CMAccelerometerData*)accelData {
+    return @{
+             @"acceleration": @{
+                     @"x" : [NSNumber numberWithDouble:accelData.acceleration.x],
+                     @"y" : [NSNumber numberWithDouble:accelData.acceleration.y],
+                     @"z" : [NSNumber numberWithDouble:accelData.acceleration.z],
+                     @"timestamp" : [NSNumber numberWithDouble:accelData.timestamp]
+                     }
+             };
 }
 
 @end

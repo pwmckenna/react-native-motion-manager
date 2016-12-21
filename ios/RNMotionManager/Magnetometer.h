@@ -7,13 +7,12 @@
 #import "RCTBridgeModule.h"
 #import <CoreMotion/CoreMotion.h>
 
-@interface Magnetometer : NSObject <RCTBridgeModule> {
-  CMMotionManager *_motionManager;
-}
+@interface Magnetometer : NSObject <RCTBridgeModule>
+
 - (void) setMagnetometerUpdateInterval:(double) interval;
-- (void) getMagnetometerUpdateInterval:(RCTResponseSenderBlock) cb;
-- (void) getMagnetometerData:(RCTResponseSenderBlock) cb;
-- (void) startMagnetometerUpdates:(RCTResponseSenderBlock) cb;
+- (void) getMagnetometerUpdateInterval:(nonnull RCTResponseSenderBlock) cb;
+- (void) getMagnetometerData:(nonnull RCTResponseSenderBlock) cb;
+- (void) startMagnetometerUpdates:(nonnull RCTResponseSenderBlock) cb;
 - (void) stopMagnetometerUpdates;
 
 @end
