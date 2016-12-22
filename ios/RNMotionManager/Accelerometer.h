@@ -7,13 +7,12 @@
 #import "RCTBridgeModule.h"
 #import <CoreMotion/CoreMotion.h>
 
-@interface Accelerometer : NSObject <RCTBridgeModule> {
-  CMMotionManager *_motionManager;
-}
+@interface Accelerometer : NSObject <RCTBridgeModule>
+
 - (void) setAccelerometerUpdateInterval:(double) interval;
-- (void) getAccelerometerUpdateInterval:(RCTResponseSenderBlock) cb;
-- (void) getAccelerometerData:(RCTResponseSenderBlock) cb;
-- (void) startAccelerometerUpdates:(RCTResponseSenderBlock) cb;
+- (void) getAccelerometerUpdateInterval:(nonnull RCTResponseSenderBlock) cb;
+- (void) getAccelerometerData:(nonnull RCTResponseSenderBlock) cb;
+- (void) startAccelerometerUpdates:(nonnull RCTResponseSenderBlock) cb;
 - (void) stopAccelerometerUpdates;
 
 @end

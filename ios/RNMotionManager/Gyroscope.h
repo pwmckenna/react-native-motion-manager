@@ -7,13 +7,12 @@
 #import "RCTBridgeModule.h"
 #import <CoreMotion/CoreMotion.h>
 
-@interface Gyroscope : NSObject <RCTBridgeModule> {
-    CMMotionManager *_motionManager;
-}
+@interface Gyroscope : NSObject <RCTBridgeModule>
+
 - (void) setGyroUpdateInterval:(double) interval;
-- (void) getGyroUpdateInterval:(RCTResponseSenderBlock) cb;
-- (void) getGyroData:(RCTResponseSenderBlock) cb;
-- (void) startGyroUpdates:(RCTResponseSenderBlock) cb;
+- (void) getGyroUpdateInterval:(nonnull RCTResponseSenderBlock) cb;
+- (void) getGyroData:(nonnull RCTResponseSenderBlock) cb;
+- (void) startGyroUpdates:(nonnull RCTResponseSenderBlock) cb;
 - (void) stopGyroUpdates;
 
 @end
