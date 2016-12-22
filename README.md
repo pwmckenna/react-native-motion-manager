@@ -1,6 +1,6 @@
 # react-native-motion-manager
 
-CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and Magnetometer.
+CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, Magnetometer, and DeviceMotion.
 
 ### Add it to your project
 
@@ -22,7 +22,8 @@ If you get stuck, take a look at [Brent Vatne's blog](http://brentvatne.ca/packa
 var {
     Accelerometer,
     Gyroscope,
-    Magnetometer
+    Magnetometer,
+    DeviceMotion
 } = require('NativeModules');
 var {
   DeviceEventEmitter // will emit events that you can listen to
@@ -70,6 +71,23 @@ DeviceEventEmitter.addListener('MagnetometerData', function (data) {
 });
 Magnetometer.startMagnetometerUpdates(); // you'll start getting MagnetomerData events above
 Magnetometer.stopMagnetometerUpdates();
+```
+
+### DeviceMotion (Acceleration Data)
+```js
+DeviceMotion.setDeviceMotionUpdateInterval(0.1); // in seconds
+DeviceEventEmitter.addListener('MotionData', function (data) {
+  /**
+  * data.gravity.x
+  * data.gravity.y
+  * data.gravity.z
+  * data.userAcceleration.x
+  * data.userAcceleration.y
+  * data.userAcceleration.z
+  **/
+});
+DeviceMotion.startDeviceMotionUpdates(); // you'll start getting MotionData events above
+DeviceMotion.stopDeviceMotionUpdates();
 ```
 
 # Example
