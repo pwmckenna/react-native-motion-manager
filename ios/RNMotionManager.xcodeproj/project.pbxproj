@@ -22,13 +22,6 @@
 			remoteGlobalIDString = BB9CC7EC1AE0A2EB008A1D08;
 			remoteInfo = RNMotionManager;
 		};
-		C42562BC1DE892D70087B901 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 837CE5BFACF04F52920BF33A /* RNConnectedCommon.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNConnectedCommon;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		38AFC3A99FB54134B2D6F760 /* libRNConnectedCommon.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNConnectedCommon.a; sourceTree = "<group>"; };
-		837CE5BFACF04F52920BF33A /* RNConnectedCommon.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNConnectedCommon.xcodeproj; path = "../node_modules/react-native-connected-common/ios/RNConnectedCommon/RNConnectedCommon.xcodeproj"; sourceTree = "<group>"; };
 		BB9CC7ED1AE0A2EB008A1D08 /* libRNMotionManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNMotionManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9CC7F81AE0A2EB008A1D08 /* RNMotionManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNMotionManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9CC7FE1AE0A2EB008A1D08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +47,7 @@
 		BB9CC80B1AE0A707008A1D08 /* Accelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Accelerometer.m; sourceTree = "<group>"; };
 		BB9CC80C1AE0A707008A1D08 /* Magnetometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnetometer.h; sourceTree = "<group>"; };
 		BB9CC80D1AE0A707008A1D08 /* Magnetometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Magnetometer.m; sourceTree = "<group>"; };
+		DC06B37FC58A443CAF984E58 /* RNConnectedCommon.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNConnectedCommon.xcodeproj; path = "../node_modules/react-native-connected-common/ios/RNConnectedCommon/RNConnectedCommon.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +73,7 @@
 		84F914C793B14B98A6474E24 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				837CE5BFACF04F52920BF33A /* RNConnectedCommon.xcodeproj */,
+				DC06B37FC58A443CAF984E58 /* RNConnectedCommon.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -131,14 +124,6 @@
 				BB9CC7FE1AE0A2EB008A1D08 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C42562B91DE892D70087B901 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C42562BD1DE892D70087B901 /* libRNConnectedCommon.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,12 +191,6 @@
 			mainGroup = BB9CC7E41AE0A2EB008A1D08;
 			productRefGroup = BB9CC7EE1AE0A2EB008A1D08 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = C42562B91DE892D70087B901 /* Products */;
-					ProjectRef = 837CE5BFACF04F52920BF33A /* RNConnectedCommon.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BB9CC7EC1AE0A2EB008A1D08 /* RNMotionManager */,
@@ -219,16 +198,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		C42562BD1DE892D70087B901 /* libRNConnectedCommon.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNConnectedCommon.a;
-			remoteRef = C42562BC1DE892D70087B901 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BB9CC7F61AE0A2EB008A1D08 /* Resources */ = {
@@ -359,6 +328,7 @@
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/../../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-connected-common/ios/RNConnectedCommon",
+					"$(SRCROOT)/../node_modules/react-native-connected-common/ios/RNConnectedCommon",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -378,6 +348,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-connected-common/ios/RNConnectedCommon",
 					"$(SRCROOT)/../node_modules/react-native-connected-common/ios/RNConnectedCommon",
 				);
 				LIBRARY_SEARCH_PATHS = (
