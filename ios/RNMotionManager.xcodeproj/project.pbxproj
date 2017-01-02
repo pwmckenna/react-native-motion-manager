@@ -47,7 +47,6 @@
 		BB9CC80B1AE0A707008A1D08 /* Accelerometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Accelerometer.m; sourceTree = "<group>"; };
 		BB9CC80C1AE0A707008A1D08 /* Magnetometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnetometer.h; sourceTree = "<group>"; };
 		BB9CC80D1AE0A707008A1D08 /* Magnetometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Magnetometer.m; sourceTree = "<group>"; };
-		DC06B37FC58A443CAF984E58 /* RNConnectedCommon.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNConnectedCommon.xcodeproj; path = "../node_modules/react-native-connected-common/ios/RNConnectedCommon/RNConnectedCommon.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +72,6 @@
 		84F914C793B14B98A6474E24 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				DC06B37FC58A443CAF984E58 /* RNConnectedCommon.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
