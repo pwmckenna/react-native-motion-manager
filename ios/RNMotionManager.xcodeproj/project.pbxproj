@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ADE9F42FCD89422F8950A435 /* libRNConnectedCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38AFC3A99FB54134B2D6F760 /* libRNConnectedCommon.a */; };
 		BB9CC7F91AE0A2EB008A1D08 /* libRNMotionManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9CC7ED1AE0A2EB008A1D08 /* libRNMotionManager.a */; };
 		BB9CC8081AE0A5FE008A1D08 /* Gyroscope.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9CC8071AE0A5FE008A1D08 /* Gyroscope.m */; };
 		BB9CC80E1AE0A707008A1D08 /* Accelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9CC80B1AE0A707008A1D08 /* Accelerometer.m */; };
@@ -37,7 +36,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		38AFC3A99FB54134B2D6F760 /* libRNConnectedCommon.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNConnectedCommon.a; sourceTree = "<group>"; };
 		BB9CC7ED1AE0A2EB008A1D08 /* libRNMotionManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNMotionManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9CC7F81AE0A2EB008A1D08 /* RNMotionManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNMotionManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9CC7FE1AE0A2EB008A1D08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADE9F42FCD89422F8950A435 /* libRNConnectedCommon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,8 +322,6 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/../../node_modules/react-native/React/**",
-					"$(SRCROOT)/../node_modules/react-native-connected-common/ios/RNConnectedCommon",
-					"$(SRCROOT)/../node_modules/react-native-connected-common/ios/RNConnectedCommon",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -346,8 +341,6 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/../../node_modules/react-native/React/**",
-					"$(SRCROOT)/../node_modules/react-native-connected-common/ios/RNConnectedCommon",
-					"$(SRCROOT)/../node_modules/react-native-connected-common/ios/RNConnectedCommon",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
