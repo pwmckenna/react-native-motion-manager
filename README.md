@@ -10,8 +10,8 @@ CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and
 ### Add it to your project
 
 1. `npm install react-native-motion-manager@latest --save`
-1. `react-native link`. This is equivalent to the manual steps. (Note 
-that for `react-native link` to work you directory must be named ios all lower case):
+1. `react-native link` (Note 
+that for `react-native link` to work you directory must be named ios all lower case). This is equivalent to the manual steps:
     1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
     1. Go to `node_modules` ➜ `react-native-motion-manager` and add `RNMotionManager.xcodeproj`
     1. In XCode, in the project navigator, select your project. Add `libRNMotionManager.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
