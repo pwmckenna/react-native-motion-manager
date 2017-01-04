@@ -1,0 +1,219 @@
+exports[`test renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "overflow": "hidden",
+      },
+      Object {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+      },
+    ]
+  }>
+  <View
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "flex": 1,
+        "overflow": "hidden",
+      }
+    }>
+    <View
+      onStartShouldSetResponderCapture={[Function]}
+      pointerEvents="auto"
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "overflow": "hidden",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+              Object {
+                "translateY": 0,
+              },
+              Object {
+                "scaleX": 1,
+              },
+              Object {
+                "scaleY": 1,
+              },
+              Object {
+                "rotate": "0deg",
+              },
+              Object {
+                "skewX": "0deg",
+              },
+              Object {
+                "skewY": "0deg",
+              },
+            ],
+          },
+          null,
+        ]
+      }>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "paddingTop": 100,
+          }
+        }>
+        <View
+          accessibilityComponentType="button"
+          accessibilityLabel={undefined}
+          accessibilityTraits="button"
+          accessible={true}
+          hitSlop={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID={undefined}>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "#007aff",
+                  "fontFamily": "HelveticaNeue-Medium",
+                  "fontSize": 17,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                },
+                null,
+                Object {
+                  "fontSize": 30,
+                },
+                null,
+              ]
+            }>
+            Accelerometer
+          </Text>
+        </View>
+        <View
+          accessibilityComponentType="button"
+          accessibilityLabel={undefined}
+          accessibilityTraits="button"
+          accessible={true}
+          hitSlop={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID={undefined}>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "#007aff",
+                  "fontFamily": "HelveticaNeue-Medium",
+                  "fontSize": 17,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                },
+                null,
+                Object {
+                  "fontSize": 30,
+                },
+                null,
+              ]
+            }>
+            Gyroscope
+          </Text>
+        </View>
+        <View
+          accessibilityComponentType="button"
+          accessibilityLabel={undefined}
+          accessibilityTraits="button"
+          accessible={true}
+          hitSlop={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID={undefined}>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "#007aff",
+                  "fontFamily": "HelveticaNeue-Medium",
+                  "fontSize": 17,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                },
+                null,
+                Object {
+                  "fontSize": 30,
+                },
+                null,
+              ]
+            }>
+            Magnetometer
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -7,19 +7,21 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "15.4.1",
-    "react-native": "0.38.0",
+    "react": "^15.4.1",
+    "react-native": "^0.38.0",
     "react-native-motion-manager": "file:../..",
-    "react-native-button": "1.7.1",
-    "react-native-video": "git://git@github.com:react-native-community/react-native-video.git"
+    "react-native-button": "^1.7.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "test-utils/setup-jest.js"
+    ]
   },
   "devDependencies": {
-    "babel-jest": "17.0.2",
-    "babel-preset-react-native": "1.9.0",
-    "jest": "17.0.3",
-    "react-test-renderer": "15.4.1"
+    "babel-jest": "^17.0.2",
+    "babel-preset-react-native": "^1.9.0",
+    "jest": "^17.0.3",
+    "react-test-renderer": "^15.4.1"
   }
 }
