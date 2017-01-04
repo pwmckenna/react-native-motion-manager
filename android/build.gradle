@@ -27,14 +27,10 @@ android {
 
 repositories {
     mavenCentral()
-
-    flatDir {
-        dirs 'libs'
-    }
 }
 
 dependencies {
-    compile 'com.connectedlab.reactnative.commonlib:commonlib:1.0@aar'
+    compile 'com.connectedlab.reactnative:react-native-connected-common:0.0.1@aar'
     compile 'com.facebook.react:react-native:0.20.1'
     compile 'com.jakewharton.timber:timber:4.3.1'
 }
