@@ -5,7 +5,7 @@
 //
 
 #import <React/RCTBridge.h>
-#import "RCTEventDispatcher.h"
+#import <React/RCTEventDispatcher.h>
 #import "Gyroscope.h"
 
 @implementation Gyroscope
