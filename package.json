@@ -1,6 +1,6 @@
 {
   "name": "react-native-motion-manager",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A react-native interface for using the Gyroscope, Accelerometer and Magnetometer",
   "main": "index.js",
   "scripts": {
