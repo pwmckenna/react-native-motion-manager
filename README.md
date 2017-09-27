@@ -1,3 +1,7 @@
+# Notice
+
+I don't use this module anymore, and don't have time to maintain it. I've been handing out both github and npm write access to folks that seem interested, so feel free to ask.
+
 # react-native-motion-manager
 
 CMMotionManager wrapper for react-native, exposing Accelerometer, Gyroscope, and Magnetometer.
