@@ -22,11 +22,15 @@
   },
   "author": "Patrick Williams <pwmckenna@gmail.com> (http://pwmckenna.com/)",
   "contributors": [
+    "Josh Allen <josh.allen.it@gmail.com> (http://connectedlab.com/)>",
     "Brent Vatne <brentvatne@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pwmckenna/react-native-motion-manager/issues"
+  },
+  "dependencies": {
+    "react-native-connected-common": "^1.0.2"
   },
   "homepage": "https://github.com/pwmckenna/react-native-motion-manager",
   "peerDependencies": {

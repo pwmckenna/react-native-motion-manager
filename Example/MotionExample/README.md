@@ -1,19 +1,19 @@
 # react-native-motion-manager
 
 # MotionManager
-This is a react app that shows how to write obj-c wrappers around the iOS [CMMotionManager](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMMotionManager_Class/)
- library.
+This is a react app that shows how to write obj-c and Android wrappers around the iOS [CMMotionManager](https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMMotionManager_Class/) and Android Sensor
+ libraries.
 # Usage
 
 If you just want to see this code in action, checkout the code and fire up the xcodeproj and run it.
 
 If you're trying to integrate this into your app, its a little bit tricky. I don't quite know how to package this up so you can just `npm install` it. Coming soon though!
 
-At this point, just copy and paste `iOS/Accelerometer.h` + `iOS/Accelerometer.m` (or Gyroscope or Magnetomer) into your `iOS` folder.  
+At this point, just copy and paste `iOS/Accelerometer.h` + `iOS/Accelerometer.m` (or Gyroscope or Magnetomer) into your `iOS` folder.
 
 
-Does anyone know how to share react-native components that are wrappers around native utilities?  
-There must be a better way to package this stuff...  
+Does anyone know how to share react-native components that are wrappers around native utilities?
+There must be a better way to package this stuff...
 
 # Api
 
