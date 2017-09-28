@@ -1,14 +1,14 @@
 {
-  "name": "react-native-motion-manager",
+  "name": "MotionExample",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react-native": "^0.3.11",
-    "react-native-button": "^1.0.0",
-    "react-native-motion-manager": "^0.0.1"
+    "react-native": "^0.20.0",
+    "react-native-button": "^1.4.2",
+    "react-native-motion-manager": "0.0.6"
   },
   "description": "React Native wrapper for native iOS CMMotionManager",
   "main": "index.ios.js",

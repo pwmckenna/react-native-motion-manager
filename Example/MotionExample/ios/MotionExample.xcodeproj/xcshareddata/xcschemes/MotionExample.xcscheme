@@ -15,9 +15,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "MotionManager.app"
-               BlueprintName = "MotionManager"
-               ReferencedContainer = "container:MotionManager.xcodeproj">
+               BuildableName = "MotionExample.app"
+               BlueprintName = "MotionExample"
+               ReferencedContainer = "container:MotionExample.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BuildableName = "MotionExampleTests.xctest"
+               BlueprintName = "MotionExampleTests"
+               ReferencedContainer = "container:MotionExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,14 +42,24 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BuildableName = "MotionExampleTests.xctest"
+               BlueprintName = "MotionExampleTests"
+               ReferencedContainer = "container:MotionExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MotionManager.app"
-            BlueprintName = "MotionManager"
-            ReferencedContainer = "container:MotionManager.xcodeproj">
+            BuildableName = "MotionExample.app"
+            BlueprintName = "MotionExample"
+            ReferencedContainer = "container:MotionExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MotionManager.app"
-            BlueprintName = "MotionManager"
-            ReferencedContainer = "container:MotionManager.xcodeproj">
+            BuildableName = "MotionExample.app"
+            BlueprintName = "MotionExample"
+            ReferencedContainer = "container:MotionExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -72,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MotionManager.app"
-            BlueprintName = "MotionManager"
-            ReferencedContainer = "container:MotionManager.xcodeproj">
+            BuildableName = "MotionExample.app"
+            BlueprintName = "MotionExample"
+            ReferencedContainer = "container:MotionExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

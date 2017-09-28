@@ -71,6 +71,6 @@ var App = React.createClass({
   }
 });
 
-AppRegistry.registerComponent('MotionManager', function () {
+AppRegistry.registerComponent('MotionExample', function () {
   return App
 });
